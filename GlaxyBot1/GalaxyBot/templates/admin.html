@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %}Admin Panel{% endblock %}
+{% block content %}
+    <h1>Admin Panel</h1>
+    <p>Welcome, Bot Owner!</p>
+    
+    <div id="maintenance-section">
+        <h2>Maintenance Mode</h2>
+        <p>Current Status: <strong id="status-text">Loading...</strong></p>
+        <button id="toggle-button">Toggle Maintenance Mode</button>
+        <p id="status-message" style="display: none;"></p>
+    </div>
+
+    <br>
+    <a href="{{ url_for('select_server') }}">Back to Server List</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const statusText = document.getElementById('status-text');
+            const toggleButton = document.getElementById('toggle-button');
+            const statusMessage = document.getElementById('status-message');
+
+            async function getStatus() {
+                const response = await fetch('/api/admin/status');
+                const data = await response.json();
+                statusText.textContent = data.maintenance_mode ? 'ON' : 'OFF';
+                statusText.style.color = data.maintenance_mode ? 'red' : 'green';
+            }
+
+            await getStatus();
+
+            toggleButton.addEventListener('click', async () => {
+                try {
+                    const response = await fetch('/api/admin/toggle', { method: 'POST' });
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        statusMessage.textContent = 'Status updated successfully!';
+                        statusMessage.style.color = 'green';
+                        await getStatus(); // Refresh status text
+                    } else {
+                        statusMessage.textContent = `Error: ${result.message || 'Unknown error'}`;
+                        statusMessage.style.color = 'red';
+                    }
+                } catch (error) {
+                    console.error(error);
+                    statusMessage.textContent = 'An unexpected error occurred.';
+                    statusMessage.style.color = 'red';
+                }
+                statusMessage.style.display = 'block';
+                setTimeout(() => statusMessage.style.display = 'none', 3000);
+            });
+        });
+    </script>
+{% endblock %}

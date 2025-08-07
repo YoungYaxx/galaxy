@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard - {{ guild.name }}{% endblock %}
+{% block content %}
+    <h1>Dashboard for <img src="{{ guild.icon_url }}" alt="" width="40" height="40" style="border-radius: 50%;"> {{ guild.name }}</h1>
+    
+    <div id="settings-form">
+        <div class="form-group">
+            <label for="language-select">Language</label>
+            <select id="language-select">
+                <option value="it">Italiano</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="log-channel-select">Log Channel</label>
+            <select id="log-channel-select">
+                <option value="">- None -</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="staff-role-select">Staff Role</label>
+            <select id="staff-role-select">
+                <option value="">- None -</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="timezone-select">Timezone</label>
+            <select id="timezone-select">
+                <!-- Timezones will be populated by JS if needed, but a static list is fine -->
+                <option>UTC</option>
+                <option>Europe/Rome</option>
+                <option>Europe/London</option>
+                <option>America/New_York</option>
+            </select>
+        </div>
+        <button id="save-button">Save Settings</button>
+        <p id="status-message" style="display: none;"></p>
+    </div>
+
+    <br>
+    <a href="{{ url_for('select_server') }}">Back to Server List</a> | <a href="{{ url_for('logout') }}">Logout</a>
+
+    <style>
+        .form-group { margin-bottom: 1em; }
+        label { display: block; margin-bottom: 0.5em; }
+        select { width: 100%; padding: 0.5em; background-color: #40444b; color: white; border: 1px solid #2c2f33; border-radius: 3px;}
+        button { background-color: #5865f2; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; border: none; cursor: pointer; }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const guildId = {{ guild.id }};
+            
+            const langSelect = document.getElementById('language-select');
+            const logChannelSelect = document.getElementById('log-channel-select');
+            const staffRoleSelect = document.getElementById('staff-role-select');
+            const timezoneSelect = document.getElementById('timezone-select');
+            const saveButton = document.getElementById('save-button');
+            const statusMessage = document.getElementById('status-message');
+
+            // --- Data Fetching ---
+            async function fetchData(url) {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`Failed to fetch ${url}`);
+                return response.json();
+            }
+
+            // --- Populate Selects ---
+            function populateSelect(selectElement, items, selectedId) {
+                items.forEach(item => {
+                    const option = new Option(item.name, item.id);
+                    selectElement.add(option);
+                });
+                if (selectedId) {
+                    selectElement.value = selectedId;
+                }
+            }
+
+            try {
+                // Fetch all data in parallel
+                const [settings, channels, roles] = await Promise.all([
+                    fetchData(`/api/settings/${guildId}`),
+                    fetchData(`/api/guild/${guildId}/channels`),
+                    fetchData(`/api/guild/${guildId}/roles`)
+                ]);
+
+                // Populate forms with current settings
+                langSelect.value = settings.language || 'it';
+                timezoneSelect.value = settings.timezone || 'UTC';
+                populateSelect(logChannelSelect, channels, settings.log_channel_id);
+                populateSelect(staffRoleSelect, roles, settings.staff_role_id);
+
+            } catch (error) {
+                console.error(error);
+                statusMessage.textContent = 'Failed to load server data.';
+                statusMessage.style.color = 'red';
+                statusMessage.style.display = 'block';
+            }
+
+            // --- Save Logic ---
+            saveButton.addEventListener('click', async () => {
+                const payload = {
+                    language: langSelect.value,
+                    log_channel_id: logChannelSelect.value ? parseInt(logChannelSelect.value) : null,
+                    staff_role_id: staffRoleSelect.value ? parseInt(staffRoleSelect.value) : null,
+                    timezone: timezoneSelect.value
+                };
+
+                try {
+                    const response = await fetch(`/api/settings/${guildId}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        statusMessage.textContent = 'Settings saved successfully!';
+                        statusMessage.style.color = 'green';
+                    } else {
+                        statusMessage.textContent = `Error: ${result.message || 'Unknown error'}`;
+                        statusMessage.style.color = 'red';
+                    }
+                } catch (error) {
+                    console.error(error);
+                    statusMessage.textContent = 'An unexpected error occurred.';
+                    statusMessage.style.color = 'red';
+                }
+                statusMessage.style.display = 'block';
+                setTimeout(() => statusMessage.style.display = 'none', 3000);
+            });
+        });
+    </script>
+{% endblock %}

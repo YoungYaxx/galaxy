@@ -1,0 +1,69 @@
+services:
+  # Servizio Web per il Pannello Flask
+  - type: web
+    name: bot-dashboard
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python run.py web"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.13
+      - key: FLASK_SECRET_KEY
+        generateValue: true # Render genererà una chiave sicura
+      - key: DISCORD_CLIENT_ID
+        fromService:
+          type: sync
+          name: bot-secrets
+          property: DISCORD_CLIENT_ID
+      - key: DISCORD_CLIENT_SECRET
+        fromService:
+          type: sync
+          name: bot-secrets
+          property: DISCORD_CLIENT_SECRET
+      - key: DISCORD_BOT_TOKEN
+        fromService:
+          type: sync
+          name: bot-secrets
+          property: DISCORD_BOT_TOKEN
+      - key: DISCORD_REDIRECT_URI
+        value: "https://your-dashboard-url.onrender.com/callback" # DA CAMBIARE
+
+  # Worker in background per il Bot Discord
+  - type: worker
+    name: discord-bot
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python run.py bot"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.13
+      - key: DISCORD_BOT_TOKEN
+        fromService:
+          type: sync
+          name: bot-secrets
+          property: DISCORD_BOT_TOKEN
+      - key: BOT_OWNER_ID
+        fromService:
+          type: sync
+          name: bot-secrets
+          property: BOT_OWNER_ID
+    # Disco persistente per il database SQLite
+    disk:
+      name: data
+      mountPath: /var/data/render
+      sizeGB: 1
+
+# Gruppo di variabili d'ambiente per non ripeterle
+envVarGroups:
+  - name: bot-secrets
+    envVars:
+      - key: DISCORD_CLIENT_ID
+        sync: false
+      - key: DISCORD_CLIENT_SECRET
+        sync: false
+      - key: DISCORD_BOT_TOKEN
+        sync: false
+      - key: BOT_OWNER_ID
+        sync: false

@@ -1,0 +1,128 @@
+{
+  "coinflip_title": "Coin Flip 🪙",
+  "coinflip_result": "The result is **{result}**!",
+  "heads": "Heads",
+  "tails": "Tails",
+  "config_lang_success": "Bot language set to **English**.",
+  "config_lang_invalid": "Invalid language. Choose between `it` (Italian) and `en` (English).",
+
+  "8ball_title": "🔮 Magic 8-Ball 🔮",
+  "8ball_question": "Question: *{question}*",
+  "8ball_answer": "Answer: **{answer}**",
+  "8ball_answers": [
+    "It is certain.",
+    "Without a doubt.",
+    "You can count on it.",
+    "Most likely.",
+    "Outlook good.",
+    "Signs point to yes.",
+    "Cannot predict now.",
+    "Concentrate and ask again.",
+    "Don't count on it.",
+    "My reply is no.",
+    "My sources say no.",
+    "Outlook not so good.",
+    "Very doubtful."
+  ],
+
+  "animal_title_dog": "🐶 Dog Picture",
+  "animal_title_cat": "🐱 Cat Picture",
+
+  "joke_title": "😂 A Joke!",
+  "joke_error": "Sorry, I couldn't fetch a joke right now.",
+
+  "error_generic_title": "🚫 Error",
+  "error_api": "There was a problem contacting the external service. Please try again later.",
+
+  "perms_error_title": "🔒 Insufficient Permissions",
+  "perms_error_desc": "You do not have the required permissions to run this command.",
+
+  "config_log_channel_success": "Log channel set to {channel}.",
+
+  "clear_success": "Deleted **{amount}** messages.",
+  "clear_description": "Deletes a specified number of messages from the channel.",
+
+  "kick_success_dm": "You have been kicked from **{guild_name}** for the following reason: {reason}",
+  "kick_success_channel": "**{user}** has been kicked.",
+  "kick_reason_default": "No reason specified.",
+
+  "ban_success_dm": "You have been banned from **{guild_name}** for the following reason: {reason}",
+  "ban_success_channel": "**{user}** has been banned.",
+
+  "mute_success_channel": "**{user}** has been muted until {timestamp} for: {reason}",
+  "unmute_success_channel": "**{user}** has been unmuted.",
+
+  "warn_success_channel": "**{user}** has been warned. (Warning #{count})",
+  "warn_success_dm": "You have been warned in **{guild_name}** for: {reason}",
+
+  "warnings_list_title": "Warnings for {user}",
+  "warnings_list_no_warnings": "This user has no warnings.",
+  "warnings_list_entry": "ID: `{warn_id}` | Moderator: `{moderator}`\nReason: {reason}",
+
+  "clearwarns_success": "All warnings for **{user}** have been cleared.",
+
+  "log_title": "Moderation Log",
+  "log_action_kick": "Kick",
+  "log_action_ban": "Ban",
+  "log_action_mute": "Mute",
+  "log_action_unmute": "Unmute",
+  "log_action_warn": "Warn",
+  "log_action_clearwarns": "Clear Warnings",
+  "log_user": "User",
+  "log_moderator": "Moderator",
+  "log_reason": "Reason",
+
+  "help_title": "📜 Help Panel",
+  "help_description": "Welcome! I am a multi-function bot. Use the menu below to explore the available command categories.",
+  "help_select_placeholder": "Choose a category...",
+  "help_category_fun": "Fun",
+  "help_category_fun_desc": "Commands for fun and to pass the time.",
+  "help_category_mod": "Moderation",
+  "help_category_mod_desc": "Commands for server management.",
+  "help_category_config": "Configuration",
+  "help_category_config_desc": "Commands to configure the bot.",
+  "help_commands_title": "Commands in `{category}`",
+  "help_image_url": "https://placehold.co/600x200/add8e6/ffffff?text=Commands",
+
+  "config_panel_title": "Configuration Panel",
+  "config_panel_desc": "Use the buttons below to configure the bot for this server.",
+  "config_button_lang": "Language",
+  "config_button_logs": "Log Channel",
+  "config_button_staff": "Staff Role",
+  "config_button_tz": "Timezone",
+
+  "config_set_staff_role_success": "Staff role set to {role}.",
+  "config_set_timezone_success": "Timezone set to `{timezone}`.",
+  "config_success_generic": "Setting updated successfully!",
+
+  "modal_log_channel_title": "Set Log Channel",
+  "modal_log_channel_label": "Text Channel ID",
+  "modal_log_channel_placeholder": "Paste the ID of the log channel here.",
+  "modal_staff_role_title": "Set Staff Role",
+  "modal_staff_role_label": "Role ID",
+  "modal_staff_role_placeholder": "Paste the ID of the staff role here.",
+  "modal_error_invalid_id": "The provided ID is invalid or was not found.",
+
+  "rps_title": "✊ Rock, Paper, Scissors ✌️",
+  "rps_user_choice": "You chose",
+  "rps_bot_choice": "I chose",
+  "rps_win": "You win!",
+  "rps_lose": "I win!",
+  "rps_tie": "It's a tie!",
+
+  "rate_title": "📊 Rating",
+  "rate_result": "I rate **{thing}** a **{rating}/10**.",
+
+  "ship_title": "❤️ Love Calculator ❤️",
+  "ship_result": "The compatibility between **{user1}** and **{user2}** is **{percentage}%**!",
+  "ship_perfect": "A perfect match! ✨",
+  "ship_good": "High hopes!",
+  "ship_medium": "Maybe with some effort...",
+  "ship_bad": "Better stay friends.",
+
+  "action_hug": "**{user1}** hugged **{user2}**!",
+  "action_kiss": "**{user1}** kissed **{user2}**!",
+  "action_slap": "**{user1}** slapped **{user2}**!",
+
+  "meme_title": "🤣 A Fresh Meme"
+}

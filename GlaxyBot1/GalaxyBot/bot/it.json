@@ -1,0 +1,128 @@
+{
+  "coinflip_title": "Lancio della Moneta 🪙",
+  "coinflip_result": "È uscito **{result}**!",
+  "heads": "Testa",
+  "tails": "Croce",
+  "config_lang_success": "Lingua del bot impostata su **Italiano**.",
+  "config_lang_invalid": "Lingua non valida. Scegli tra `it` (Italiano) e `en` (Inglese).",
+
+  "8ball_title": "🔮 Palla 8 Magica 🔮",
+  "8ball_question": "Domanda: *{question}*",
+  "8ball_answer": "Risposta: **{answer}**",
+  "8ball_answers": [
+    "È certo.",
+    "Senza alcun dubbio.",
+    "Puoi contarci.",
+    "Molto probabilmente.",
+    "Le prospettive sono buone.",
+    "I segni indicano di sì.",
+    "Non posso prevederlo ora.",
+    "Concentrati e chiedi di nuovo.",
+    "Non contarci.",
+    "La mia risposta è no.",
+    "Le mie fonti dicono di no.",
+    "Le prospettive non sono buone.",
+    "Molto incerto."
+  ],
+
+  "animal_title_dog": "🐶 Immagine di un Cane",
+  "animal_title_cat": "🐱 Immagine di un Gatto",
+
+  "joke_title": "😂 Battuta!",
+  "joke_error": "Scusa, non sono riuscito a trovare una battuta al momento.",
+
+  "error_generic_title": "🚫 Errore",
+  "error_api": "C'è stato un problema nel contattare il servizio esterno. Riprova più tardi.",
+
+  "perms_error_title": "🔒 Permessi Insufficienti",
+  "perms_error_desc": "Non hai i permessi necessari per eseguire questo comando.",
+
+  "config_log_channel_success": "Canale dei log impostato su {channel}.",
+
+  "clear_success": "Cancellati **{amount}** messaggi.",
+  "clear_description": "Cancella un numero specificato di messaggi dal canale.",
+
+  "kick_success_dm": "Sei stato espulso da **{guild_name}** per il seguente motivo: {reason}",
+  "kick_success_channel": "**{user}** è stato espulso.",
+  "kick_reason_default": "Nessun motivo specificato.",
+
+  "ban_success_dm": "Sei stato bannato da **{guild_name}** per il seguente motivo: {reason}",
+  "ban_success_channel": "**{user}** è stato bannato.",
+
+  "mute_success_channel": "**{user}** è stato silenziato fino a {timestamp} per: {reason}",
+  "unmute_success_channel": "Il silence a **{user}** è stato rimosso.",
+
+  "warn_success_channel": "**{user}** è stato avvisato. (Avvertimento #{count})",
+  "warn_success_dm": "Sei stato avvisato su **{guild_name}** per: {reason}",
+
+  "warnings_list_title": "Avvertimenti per {user}",
+  "warnings_list_no_warnings": "Questo utente non ha avvertimenti.",
+  "warnings_list_entry": "ID: `{warn_id}` | Moderatore: `{moderator}`\nMotivo: {reason}",
+
+  "clearwarns_success": "Tutti gli avvertimenti per **{user}** sono stati rimossi.",
+
+  "log_title": "Log di Moderazione",
+  "log_action_kick": "Espulsione",
+  "log_action_ban": "Ban",
+  "log_action_mute": "Silence",
+  "log_action_unmute": "Rimozione Silence",
+  "log_action_warn": "Avvertimento",
+  "log_action_clearwarns": "Cancellazione Avvertimenti",
+  "log_user": "Utente",
+  "log_moderator": "Moderatore",
+  "log_reason": "Motivo",
+
+  "help_title": "📜 Pannello di Aiuto",
+  "help_description": "Benvenuto! Sono un bot multi-funzione. Usa il menu qui sotto per esplorare le categorie di comandi disponibili.",
+  "help_select_placeholder": "Scegli una categoria...",
+  "help_category_fun": "Divertimento",
+  "help_category_fun_desc": "Comandi per divertirsi e passare il tempo.",
+  "help_category_mod": "Moderazione",
+  "help_category_mod_desc": "Comandi per la gestione del server.",
+  "help_category_config": "Configurazione",
+  "help_category_config_desc": "Comandi per configurare il bot.",
+  "help_commands_title": "Comandi in `{category}`",
+  "help_image_url": "https://placehold.co/600x200/add8e6/ffffff?text=Comandi",
+
+  "config_panel_title": "Pannello di Configurazione",
+  "config_panel_desc": "Usa i pulsanti qui sotto per configurare il bot per questo server.",
+  "config_button_lang": "Lingua",
+  "config_button_logs": "Canale Log",
+  "config_button_staff": "Ruolo Staff",
+  "config_button_tz": "Fuso Orario",
+
+  "config_set_staff_role_success": "Ruolo staff impostato a {role}.",
+  "config_set_timezone_success": "Fuso orario impostato a `{timezone}`.",
+  "config_success_generic": "Impostazione aggiornata con successo!",
+
+  "modal_log_channel_title": "Imposta Canale Log",
+  "modal_log_channel_label": "ID del Canale di Testo",
+  "modal_log_channel_placeholder": "Incolla qui l'ID del canale dei log.",
+  "modal_staff_role_title": "Imposta Ruolo Staff",
+  "modal_staff_role_label": "ID del Ruolo",
+  "modal_staff_role_placeholder": "Incolla qui l'ID del ruolo dello staff.",
+  "modal_error_invalid_id": "L'ID fornito non è valido o non è stato trovato.",
+
+  "rps_title": "✊ Sasso, Carta, Forbici ✌️",
+  "rps_user_choice": "Tu hai scelto",
+  "rps_bot_choice": "Io ho scelto",
+  "rps_win": "Hai vinto!",
+  "rps_lose": "Ho vinto io!",
+  "rps_tie": "Pareggio!",
+
+  "rate_title": "📊 Valutazione",
+  "rate_result": "Valuto **{thing}** con un **{rating}/10**.",
+
+  "ship_title": "❤️ Love Calculator ❤️",
+  "ship_result": "La compatibilità tra **{user1}** e **{user2}** è del **{percentage}%**!",
+  "ship_perfect": "Una coppia perfetta! ✨",
+  "ship_good": "Grandi speranze!",
+  "ship_medium": "Forse con un po' di impegno...",
+  "ship_bad": "Meglio restare amici.",
+
+  "action_hug": "**{user1}** ha abbracciato **{user2}**!",
+  "action_kiss": "**{user1}** ha baciato **{user2}**!",
+  "action_slap": "**{user1}** ha schiaffeggiato **{user2}**!",
+
+  "meme_title": "🤣 Un Meme Fresco Fresco"
+}

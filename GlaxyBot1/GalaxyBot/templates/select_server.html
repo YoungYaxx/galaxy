@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}Select Server{% endblock %}
+{% block content %}
+    <h1>Select a Server</h1>
+    <p>Welcome, {{ username }}! Please select a server to configure.</p>
+    <div class="server-list">
+        {% for guild in guilds %}
+            <a href="{{ url_for('dashboard', guild_id=guild.id) }}">
+                <strong>{{ guild.name }}</strong>
+            </a>
+        {% else %}
+            <p>You are not an administrator in any servers where this bot is present.</p>
+        {% endfor %}
+    </div>
+    <br>
+    <a href="{{ url_for('logout') }}">Logout</a>
+{% endblock %}
